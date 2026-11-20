@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=66.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "encrypted-c2-beaconing-classifier"
+version = "1.0.0"
+description = "Non-intrusive Encrypted C2 & Beaconing Traffic Classifier using TLS metadata, FFT signal processing, and calibrated XGBoost."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Threat Hunting & Applied ML Security Team" }
+]
+dependencies = [
+    "scapy>=2.5.0",
+    "xgboost>=2.0.0",
+    "scikit-learn>=1.4.0",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "pandas>=2.0.0",
+    "matplotlib>=3.7.0",
+    "rich>=13.0.0",
+    "pyyaml>=6.0",
+    "joblib>=1.3.0",
+    "cryptography>=41.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+]
+
+[project.scripts]
+c2-hunter = "main:main"
+
+[tool.setuptools.packages.find]
+include = ["core*", "features*", "models*", "visualizers*", "reporters*", "scripts*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
