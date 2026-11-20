@@ -1,0 +1,27 @@
+# Encrypted C2 & Beaconing Traffic Classifier Configuration
+
+flow_extraction:
+  min_sessions: 6                 # Minimum callbacks between src->dst:port to evaluate periodicity
+  session_idle_gap_sec: 5.0       # Gap to split long-lived UDP/unflagged TCP sessions
+  target_ports: [443, 8443, 8080, 9443, 4443]
+  analyze_all_tcp_tls: true       # Analyze any TCP port containing TLS ClientHello
+
+signal_processing:
+  grid_dt_sec: 1.0                # Uniform discrete resampling grid step in seconds
+  min_duration_sec: 30.0          # Minimum observation window for spectral analysis
+  small_payload_max_bytes: 1500   # Threshold for small fixed-size heartbeat packets
+
+model:
+  n_estimators: 200
+  max_depth: 5
+  learning_rate: 0.06
+  subsample: 0.85
+  colsample_bytree: 0.85
+  calibration_method: "sigmoid"   # "sigmoid" (Platt) or "isotonic"
+  cv_folds: 5
+  random_state: 42
+  default_threshold: 0.5
+
+reporting:
+  top_shap_features: 5
+  plot_dpi: 150

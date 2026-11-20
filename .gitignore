@@ -1,0 +1,49 @@
+# Python & Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & Linters
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Generated Captures, Models & Reports
+*.pcap
+*.pcapng
+*.joblib
+sample_pcaps/
+training_pcaps/
+reports/
+c2_detections.json
+report.html
+beacon_iat*.png
+fft_spectrum*.png
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
